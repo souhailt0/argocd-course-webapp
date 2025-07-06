@@ -50,7 +50,7 @@ jobs:
           cd $CONFIG_REPO_NAME
           pr_path="apps/pr-${{ github.event.pull_request.number }}"
           mkdir -p apps/$pr_path
-          cp helm/webapp/values.yaml apps/$pr_path/values.yaml
+          cp helm/webapp/values.yaml $pr_path/values.yaml
           sed -i "s/^\( *pr_name: *\).*/\1pr-${pr_number}/" ${pr_path}/values.yaml
           git add .
           git commit -m "Add PR preview env for PR #${{ github.event.pull_request.number }}"
